@@ -1,0 +1,17 @@
+{
+  "server": {
+    "port": 3000
+  },
+  "mongodb": {
+    "host": "mongodb",
+    "port": 27017,
+    "database": "auth"
+  },
+  "jwt": {
+
+  },
+  "log": {
+    "level": "info",
+    "accessFormat": "combined"
+  }
+}

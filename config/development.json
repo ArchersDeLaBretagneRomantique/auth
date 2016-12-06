@@ -1,0 +1,9 @@
+{
+  "mongodb": {
+    "host": "localhost",
+  },
+  "log": {
+    "level": "debug",
+    "accessFormat": "dev"
+  }
+}
