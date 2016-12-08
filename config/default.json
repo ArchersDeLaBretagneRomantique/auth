@@ -3,12 +3,26 @@
     "port": 3000
   },
   "mongodb": {
-    "host": "mongodb",
+    "host": "localhost",
     "port": 27017,
     "database": "auth"
   },
   "jwt": {
-
+    "secret": "MySuperSecret",
+    "claims": {
+      "expiresIn": "1h"
+    }
+  },
+  "cookie": {
+    "name": "Authentication",
+    "properties": {
+      "httpOnly": true,
+      "secure": true
+    }
+  },
+  "bcrypt": {
+    "saltFactor": 10,
+    "pass": 123456789
   },
   "log": {
     "level": "info",

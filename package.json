@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/ArchersDeLaBretagneRomantique/auth#readme",
   "dependencies": {
+    "bcrypt": "^1.0.1",
     "body-parser": "^1.15.2",
     "config": "^1.24.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.2.0",
     "mongoose": "^4.7.1",
