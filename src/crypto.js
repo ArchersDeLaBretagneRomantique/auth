@@ -29,7 +29,7 @@ function compare(password, hash) {
   })
 }
 
-exports = {
+module.exports = {
   genSalt,
   hashPassword,
   compare,

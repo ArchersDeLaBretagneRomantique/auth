@@ -2,10 +2,7 @@ const jwt = require('jsonwebtoken')
 const { jwt: { secret, claims } } = require('config')
 
 function generateToken({ subject }) {
-  const jwtOptions = {
-    ...claims,
-    subject,
-  }
+  const jwtOptions = Object.assign({}, claims, { subject })
   return new Promise((resolve, reject) => {
     jwt.sign({}, secret, jwtOptions, (err, token) => {
       if (err) reject({ status: 500, reason: err })
@@ -28,7 +25,7 @@ function refreshToken(token) {
     .then(generateToken)
 }
 
-exports = {
+module.exports = {
   generateToken,
   decodeToken,
   refreshToken,

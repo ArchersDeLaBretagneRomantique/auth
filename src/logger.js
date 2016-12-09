@@ -1,8 +1,8 @@
 const winston = require('winston')
-const { log } = require('config')
+const { log: { level } } = require('config')
 
 const logger = new winston.Logger({
-  level: log.level,
+  level,
   transports: [
     new winston.transports.Console(),
   ],
@@ -12,7 +12,7 @@ const stream = {
   write: message => logger.info(message.slice(0, -1)),
 }
 
-exports = {
+module.exports = {
   logger,
   stream,
 }

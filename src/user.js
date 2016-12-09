@@ -1,9 +1,8 @@
-const { Schema } = require('mongoose')
-const db = require('./db')
+const mongoose = require('mongoose')
 const { genSalt, hashPassword } = require('./crypto')
+const { logger } = require('./logger')
 
-const userSchema = Schema({
-  id: String,
+const userSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -35,16 +34,23 @@ const userSchema = Schema({
     type: Boolean,
     default: false,
   },
+  validation: {
+    token: String,
+    date: Number,
+  },
 })
 
-userSchema.pre('save', (next) => {
-  const user = this
+userSchema.pre('save', function (next) {
   genSalt()
-    .then(salt => hashPassword(user.password, salt))
+    .then(salt => hashPassword(this.password, salt))
     .then((hash) => {
-      user.password = hash
+      this.password = hash
       next()
+    })
+    .catch((err) => {
+      logger.error(err)
+      next(new Error(err))
     })
 })
 
-exports = db.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema)
