@@ -2,5 +2,8 @@
   "log": {
     "level": "debug",
     "accessFormat": "dev"
+  },
+  "mongodb": {
+    "host": "localhost"
   }
 }
